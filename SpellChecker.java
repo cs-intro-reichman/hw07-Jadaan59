@@ -21,11 +21,10 @@ public class SpellChecker {
 			return word2.length();
 		}if (word1.charAt(0) == word2.charAt(0)){
 			return levenshtein(tail(word1), tail(word2));
-		}else {
-			return (1 +(Math.min(levenshtein(tail(word1) , word2),
-					    Math.min(levenshtein(word1, tail(word2)),
-							     levenshtein(tail(word1), tail(word2))))));
-		}
+		}else
+			return (1 + Math.min(levenshtein(tail(word1), word2),
+						Math.min(levenshtein(word1,tail(word2)),
+								 levenshtein(tail(word1),tail(word2)))));
 	}
 
 	public static String[] readDictionary(String fileName) {
@@ -42,7 +41,7 @@ public class SpellChecker {
 
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
 		for (int i = 0; i < dictionary.length; i++){
-			 if (levenshtein( word ,dictionary[i]) < threshold){
+			 if (levenshtein( word ,dictionary[i]) <= threshold){
 				word = dictionary[i];
 				threshold = levenshtein( word ,dictionary[i]);
 			 }
