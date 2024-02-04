@@ -40,13 +40,18 @@ public class SpellChecker {
 	}
 
 	public static String spellChecker(String word, int threshold, String[] dictionary) {
-		for (int i = 0; i < dictionary.length; i++){
-			 if (levenshtein( word ,dictionary[i]) <= threshold){
-				word = dictionary[i];
-				threshold = levenshtein( word ,dictionary[i]);
-			 }
+		String bestMatch = word;
+		int bestDistance = threshold;
+
+		for (String dictionaryWord : dictionary) {
+			int distance = levenshtein(word, dictionaryWord);
+			if (distance <= bestDistance) {
+				bestMatch = dictionaryWord;
+				bestDistance = distance;
+			}
 		}
-		return word;
+
+		return bestMatch;
 	}
 
 }
