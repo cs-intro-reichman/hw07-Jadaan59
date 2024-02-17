@@ -42,6 +42,8 @@ Is a string metric for measuring the difference between two strings.
 
 	/*read a local file of words, and store them in an array. */
 	public static String[] readDictionary(String fileName) {
+				//linoy feedback: this is the same method as earlier, why don't you use one method for both of the classes? 
+
 		String[] dictionary = new String[3000];
 
 		In in = new In(fileName);
