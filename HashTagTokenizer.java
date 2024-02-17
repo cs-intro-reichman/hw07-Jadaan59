@@ -9,7 +9,9 @@ public class HashTagTokenizer {
 		breakHashTag(hashTag, dictionary);
 	}
 
+	
 	public static String[] readDictionary(String fileName) {
+		//linoy feedback: who said you have 3000 lines? why not use a while loop?
 		String[] dictionary = new String[3000];
 
 		In in = new In(fileName);
@@ -33,6 +35,7 @@ public class HashTagTokenizer {
 		for (int i = 0; i < dictionary.length; i++){
 			if (word.equals(dictionary[i])){
 				isExist = true;
+				//linoy feedback: if isExist is true, why do you continue checking? You check return true and stop the loop.
 			}
 			}
 		return isExist;
@@ -43,6 +46,13 @@ public class HashTagTokenizer {
 	public static void breakHashTag(String hashtag, String[] dictionary) {
 		hashtag = hashtag.toLowerCase();
 		// Base case: do nothing (return) if hashtag is an empty string.
+
+		//linoy feedback: this checking is great ! but in thee 47 line you are doing manipulation about hashtag that will cause a problem if it is empty. 
+		//linoy feedback: change the order of the fucntion: 
+		// if (hashtag.isEmpty()) {
+            			//	return;
+        			//	}
+		//hashtag = hashtag.toLowerCase();
         if (hashtag.isEmpty()) {
             return;
         }
